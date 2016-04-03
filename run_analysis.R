@@ -86,8 +86,19 @@ run_analysis <- function (trainingSetPath = "train/",
         #  4. Appropriately labels the data set with descriptive variable names.
         for (i in 1:ncol(meansAndStdSet)){
                 
+                #remove character .
                 names(meansAndStdSet)[i] <- 
                         tolower(gsub("\\.","",names(meansAndStdSet)[i]))
+                
+                #replace t prefix for time
+                names(meansAndStdSet)[i] <- 
+                        tolower(gsub("^t","time",names(meansAndStdSet)[i]))
+                
+                #replace f prefix for frecuency
+                names(meansAndStdSet)[i] <- 
+                        tolower(gsub("^f","frequency",names(meansAndStdSet)[i]))
+                
+                                
         }        
         
         #meansAndStdSet
